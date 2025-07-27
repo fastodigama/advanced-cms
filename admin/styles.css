@@ -101,8 +101,8 @@ body {
   color: green;
 }
   h1 {
-    background: linear-gradient(45deg, #0d6efd, #6610f2);
-    
+    background: linear-gradient(45deg, #29fd0d, #6610f2);
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradientShift 3s ease infinite alternate;
   }
