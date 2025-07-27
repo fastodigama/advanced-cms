@@ -1,0 +1,23 @@
+name: PHP Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  php-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: "Run PHP Linter"
+        uses: "michaelw90/PHP-Linter@v2.0.0"
+        with:
+          php_version: '8.3'
+          scan_path: './'

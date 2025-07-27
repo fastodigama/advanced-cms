@@ -21,8 +21,14 @@ include('includes/header.php');
 
 <h2>Manage Events</h2>
 
+<form method="get">
+  <input type="text" name="search" placeholder="Search by title" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+  <button type="submit">Search</button>
+</form>
+
 <?php
-$query = 'SELECT * FROM events ORDER BY event_date DESC';
+$search = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET['search']) : '';
+$query = 'SELECT * FROM events WHERE title LIKE '%$search%' ORDER BY event_date DESC';
 $result = mysqli_query($connect, $query);
 ?>
 
