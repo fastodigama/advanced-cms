@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 28, 2025 at 03:49 AM
--- Server version: 8.0.40
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Jul 28, 2025 at 04:22 PM
+-- Server version: 5.7.24
+-- PHP Version: 8.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `events` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `description` text,
   `event_date` date DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
@@ -57,13 +57,20 @@ INSERT INTO `events` (`id`, `title`, `description`, `event_date`, `location`, `c
 --
 
 CREATE TABLE `event_registrations` (
-  `id` int NOT NULL,
-  `event_id` int DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `event_id` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `registered_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_registrations`
+--
+
+INSERT INTO `event_registrations` (`id`, `event_id`, `name`, `email`, `phone`, `registered_at`) VALUES
+(1, 4, 'Fadel Matar', 'fadel.matar@gmail.com', '4168051042', '2025-07-28 16:15:40');
 
 -- --------------------------------------------------------
 
@@ -72,12 +79,12 @@ CREATE TABLE `event_registrations` (
 --
 
 CREATE TABLE `media` (
-  `id` int NOT NULL,
-  `event_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
   `media_type` enum('image','youtube','pdf') NOT NULL,
   `media_path` varchar(255) NOT NULL,
   `uploaded_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `media`
@@ -99,7 +106,7 @@ INSERT INTO `media` (`id`, `event_id`, `media_type`, `media_path`, `uploaded_at`
 --
 
 CREATE TABLE `projects` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `url` varchar(100) NOT NULL,
@@ -107,7 +114,7 @@ CREATE TABLE `projects` (
   `date` date NOT NULL,
   `photo` longblob,
   `dateAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `projects`
@@ -125,19 +132,19 @@ INSERT INTO `projects` (`id`, `title`, `content`, `url`, `type`, `date`, `photo`
 --
 
 CREATE TABLE `testimonials` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `message` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `testimonials`
 --
 
 INSERT INTO `testimonials` (`id`, `name`, `email`, `message`, `created_at`) VALUES
-(11, 'gj', 'e@y', 'g', '2025-07-27 18:36:57');
+(1, 'Fake regestrar', 'fake@fake.com', 'The event was boaring', '2025-07-28 12:16:53');
 
 -- --------------------------------------------------------
 
@@ -146,14 +153,14 @@ INSERT INTO `testimonials` (`id`, `name`, `email`, `message`, `created_at`) VALU
 --
 
 CREATE TABLE `users` (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `first` varchar(25) NOT NULL,
   `last` varchar(25) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `active` enum('Yes','No') NOT NULL DEFAULT 'Yes',
   `dateAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -168,29 +175,9 @@ INSERT INTO `users` (`id`, `first`, `last`, `email`, `password`, `active`, `date
 --
 
 --
--- Indexes for table `events`
---
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `event_registrations`
 --
 ALTER TABLE `event_registrations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `event_id` (`event_id`);
-
---
--- Indexes for table `media`
---
-ALTER TABLE `media`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `event_id` (`event_id`);
-
---
--- Indexes for table `projects`
---
-ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -200,66 +187,20 @@ ALTER TABLE `testimonials`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `event_registrations`
 --
 ALTER TABLE `event_registrations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `media`
---
-ALTER TABLE `media`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `projects`
---
-ALTER TABLE `projects`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `event_registrations`
---
-ALTER TABLE `event_registrations`
-  ADD CONSTRAINT `event_registrations_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `media`
---
-ALTER TABLE `media`
-  ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
