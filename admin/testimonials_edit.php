@@ -15,7 +15,7 @@ if(isset($_POST['name'])){
     if($_POST['name']){
         $query = 'UPDATE testimonials SET name = "' . $_POST['name'] . '", email = "' . $_POST['email'] . '", message = "' . $_POST['message'] . '" WHERE id = ' . $_GET['id'];
         mysqli_query($connect, $query);
-        set_message('Testimonial has been updated');
+        set_message('Testimonial has been updated', 'confirmation');
         header('Location: testimonials.php');
     }
 }   

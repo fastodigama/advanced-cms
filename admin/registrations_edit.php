@@ -18,7 +18,7 @@ if ($_POST) {
               WHERE id = '$id' LIMIT 1";
     
     if (mysqli_query($connect, $query)) {
-        set_message("Registration has been updated successfully");
+        set_message("Registration has been updated successfully", "confirmation");
         header('Location: event_registrations.php');
         die();
     } else {

@@ -21,7 +21,7 @@ if ($_POST) {
                   VALUES ('$event_id', '$name', '$email', '$phone')";
         
         if (mysqli_query($connect, $query)) {
-            set_message("Registration has been added successfully");
+            set_message("Registration has been added successfully", "confirmation");
             header('Location: event_registrations.php');
             die();
         } else {
