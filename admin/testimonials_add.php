@@ -9,7 +9,7 @@ if(isset($_POST['name'])){
     if($_POST['name']){
         $query = 'INSERT INTO testimonials (name, email, message) VALUES ("' . $_POST['name'] . '", "' . $_POST['email'] . '", "' . $_POST['message'] . '")';
         mysqli_query($connect, $query);
-        set_message('Testimonial has been added');
+        set_message('Testimonial has been added', 'confirmation');
         header('Location: testimonials.php');
     }
 }   

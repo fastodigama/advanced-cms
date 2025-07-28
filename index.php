@@ -18,7 +18,10 @@
   <div class="container vh-100 d-flex justify-content-center align-items-center">
     <div class="text-center">
       <h1 class="mb-4">Welcome to the Advanced CMS Admin Panel</h1>
-      <a href="admin/dashboard.php" class="btn btn-primary btn-lg">Login</a>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="admin/dashboard.php" class="btn btn-primary btn-lg">Admin Login</a>
+        <a href="events.php" class="btn btn-success btn-lg">View Events</a>
+      </div>
     </div>
   </div>
   <?php
