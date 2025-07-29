@@ -73,7 +73,27 @@ body {
   background:var(--accent-light);
   font-style:italic;
 }
-
+.event-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+}
+.event-date {
+  color: #007bff;
+  font-weight: bold;
+}
+.register-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  display: none;
+}
+.register-form.active {
+  display: block;
+}
 
 /* .page-wrapper, .sidebar,#main-content{
   border: 1px solid #000;
