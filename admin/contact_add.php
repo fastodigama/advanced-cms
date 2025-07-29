@@ -35,8 +35,8 @@ include('includes/header.php');
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-control" id="email" name="email" required>
   </div>
-  <button type="submit" class="btn btn-primary">Add Contact</button>
-  <a href="contact.php" class="btn btn-secondary ms-2">Cancel</a>
+  <button type="submit" class="btn btn-primary mt-4">Add Contact</button>
+  <a href="contact.php" class="btn btn-secondary ms-2 mt-4">Cancel</a>
 </form>
 
 <?php
