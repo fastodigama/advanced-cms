@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  
     <title>Assignment 2 PHP CMS</title>
 </head>
 <body>
@@ -15,12 +15,11 @@
                 <li><a href="dashboard.php">Admin Dashboard</a></li>
                 <li><a href="projects.php">Projects</a></li>
                 <li><a href="events.php">Events</a></li>
+                <li><a href="news.php">News</a></li>
                 <li><a href="testimonials.php">Testimonials</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
                 <li><a href="about.php">About</a></li>
             </ul>
-            
-            
         </nav>
     </header>
 
@@ -29,10 +28,10 @@
     <div class="page-wrapper">
         <aside class="sidebar">
             <?php
-            include('includes/sidebar.php');
+            include('sidebar.php');
             ?>
-    </aside>
+        </aside>
 
-    <main id="main-content">
-    
-    <?php get_message(); ?>
+        <main id="main-content">
+        
+        <?php get_message(); ?>
